@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="DREAM — мои проекты, идеи и разработки.">
+  <title>DREAM — Official Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #080b14;
+      --glass: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.12);
+      --blue: #6b91ff;
+      --text: #f4f6ff;
+      --muted: #9ba7c1;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 0%, #243a75 0%, transparent 38%),
+        radial-gradient(ellipse at 90% 45%, #19254d 0%, transparent 35%),
+        var(--bg);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    /* Навигация */
+
+    header {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      padding-top: 12px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 20px;
+      background: rgba(15, 20, 36, 0.76);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 10px 13px;
+      color: var(--muted);
+      font-size: 14px;
+      border-radius: 12px;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: #ffffff12;
+    }
+
+    /* Главная */
+
+    .hero {
+      min-height: 570px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #b9c9ff;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7da1ff;
+      box-shadow: 0 0 14px #6b91ff;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 94px);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      background: linear-gradient(100deg, #ffffff, #8eaeff 65%, #9b8aff);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero-description {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 21px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.25s, background 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #081020;
+      background: linear-gradient(110deg, #a9c1ff, #7297ff);
+      border-color: transparent;
+    }
+
+    .button-secondary {
+      background: #ffffff08;
+    }
+
+    /* Общие секции */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 5vw, 44px);
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .section-description {
+      max-width: 620px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .glass:hover {
+      border-color: #789bff65;
+    }
+
+    /* Описание */
+
+    .about-card {
+      padding: 30px;
+      line-height: 1.9;
+      color: #c4cde1;
+    }
+
+    .about-card strong {
+      color: white;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 9px 13px;
+      background: #789bff12;
+      border: 1px solid #789bff28;
+      border-radius: 11px;
+      color: #c5d4ff;
+      font-size: 12px;
+    }
+
+    /* Проекты */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      padding: 25px;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 24px;
+      font-size: 25px;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #4265b8, #232c54);
+      border: 1px solid #8aa7ff35;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 13px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .status {
+      padding: 7px 10px;
+      color: #d4c2ff;
+      background: #a080ff16;
+      border: 1px solid #a080ff35;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .project-footer {
+      margin-top: 25px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: #8faaff;
+      font-size: 13px;
+    }
+
+    /* Контакты */
+
+    .contact-card {
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Подвал */
+
+    footer {
+      margin-top: 65px;
+      border-top: 1px solid var(--border);
+      padding: 25px 0 35px;
+      color: #7f8ba5;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Анимация */
+
+    .hero, section {
+      animation: fade-in 0.8s ease both;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 2px;
+      }
+
+      .nav-links a {
+        padding: 9px 10px;
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 480px;
+        padding: 65px 0;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
+      .about-card, .project, .contact-card {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="container">
+    <nav>
+      <a class="brand" href="#home">Dream is a mask<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#home">Главная</a>
+        <a href="#about">Обо мне</a>
+        <a href="#projects">Проекты</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Главная -->
+
+    <section class="hero" id="home">
+
+      <h1>Привет, я<br><span>Dream is a mask.</span></h1>
+
+      <p class="hero-description">
+        Разработчик-энтузиаст, исследователь технологий
+        и создатель собственных проектов.
+        Здесь собраны мои идеи, разработки и эксперименты.
+      </p>
+
+      <div class="buttons">
+        <a class="button button-primary" href="#projects">
+          Смотреть проекты ↗
+        </a>
+
+        <a class="button button-secondary" href="#contacts">
+          Мои контакты
+        </a>
+      </div>
+    </section>
+
+    <!-- Описание -->
+
+    <section id="about">
+      <div class="section-label">01 / About</div>
+      <h2>Немного обо мне</h2>
+
+      <p class="section-description">
+        Добро пожаловать на мой персональный сайт.
+        Это место, где я представляю свои проекты и делюсь
+        тем, над чем работаю.
+      </p>
+
+      <div class="glass about-card">
+        <p>
+          Мой ник — <strong>Dкeam is a mask</strong>.
+          Мне интересны разработка программ,
+          дизайн интерфейсов, операционные системы
+          и современные технологии.
+        </p>
+
+        <p style="margin-top: 14px;">
+          Я экспериментирую с идеями, создаю собственные
+          продукты и постепенно превращаю концепции
+          в реальные проекты.
+        </p>
+
+        <div class="tags">
+          <span class="tag">💻 Разработка</span>
+          <span class="tag">🎨 UI / UX</span>
+          <span class="tag">🪟 Windows</span>
+          <span class="tag">✨ Liquid Glass</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Проекты -->
+
+    <section id="projects">
+      <div class="section-label">02 / Projects</div>
+      <h2>Мои проекты</h2>
+
+      <p class="section-description">
+        Мои разработки и идеи. Некоторые проекты
+        ещё находятся на стадии создания.
+      </p>
+
+      <div class="projects-grid">
+
+        <article class="glass project">
+          <div class="project-icon">✦</div>
+
+          <div class="project-top">
+            <h3>Dream Visuals</h3>
+            <span class="status">В разработке</span>
+          </div>
+
+          <p>
+            Визуальный лаунчер для майнкрафт.
+          </p>
+
+          <div class="project-footer">
+            Скоро больше информации ↗
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Контакты -->
+
+    <section id="contacts">
+      <div class="section-label">03 / Contacts</div>
+      <h2>Мои контакты</h2>
+
+      <p class="section-description">
+        Хочешь связаться со мной или узнать больше о проектах?
+        Найди меня по ссылкам ниже.
+      </p>
+
+      <div class="glass contact-card">
+        <div>
+          <h3>Связаться со мной</h3>
+          <p>По вопросам проектов и сотрудничества.</p>
+        </div>
+
+        <div class="contact-links">
+          <!-- ЗАМЕНИ ССЫЛКИ НА СВОИ -->
+
+          <a class="button button-primary"
+             href="https://github.com/dream5664che-lab"
+             target="_blank"
+             rel="noopener noreferrer">
+            GitHub ↗
+          </a>
+
+          <a class="button button-secondary"
+             href="https://t.me/Dream_is_a_mask_official"
+             target="_blank"
+             rel="noopener noreferrer">
+            Telegram ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
