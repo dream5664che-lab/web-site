@@ -1,11 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080b14">
-  <meta name="description" content="DREAM — мои проекты, идеи и разработки.">
-  <title>DREAM — Official Website</title>
+  <meta name="description" content="Dream is a mask — мои проекты, идеи и разработки.">
+  <title>Dream is a mask — Official Website</title>
 
   <style>
     * {
@@ -168,7 +169,11 @@
       border-radius: 14px;
       font-size: 14px;
       font-weight: 600;
-      transition: transform 0.25s, background 0.25s;
+      transition:
+        transform 0.25s,
+        background 0.25s,
+        border-color 0.25s;
+      cursor: pointer;
     }
 
     .button:hover {
@@ -181,8 +186,17 @@
       border-color: transparent;
     }
 
+    .button-primary:hover {
+      background: linear-gradient(110deg, #c0d1ff, #8aa8ff);
+    }
+
     .button-secondary {
       background: #ffffff08;
+    }
+
+    .button-secondary:hover {
+      background: #ffffff12;
+      border-color: #789bff65;
     }
 
     /* Общие секции */
@@ -218,14 +232,16 @@
       border-radius: 24px;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      transition: border-color 0.25s, transform 0.25s;
+      transition:
+        border-color 0.25s,
+        transform 0.25s;
     }
 
     .glass:hover {
       border-color: #789bff65;
     }
 
-    /* Описание */
+    /* Обо мне */
 
     .about-card {
       padding: 30px;
@@ -245,6 +261,8 @@
     }
 
     .tag {
+      display: inline-flex;
+      align-items: center;
       padding: 9px 13px;
       background: #789bff12;
       border: 1px solid #789bff28;
@@ -257,12 +275,18 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 280px), 1fr)
+      );
       gap: 18px;
     }
 
     .project {
+      display: flex;
+      flex-direction: column;
       padding: 25px;
+      min-width: 0;
     }
 
     .project-icon {
@@ -297,6 +321,7 @@
       border: 1px solid #a080ff35;
       border-radius: 10px;
       font-size: 11px;
+      white-space: nowrap;
     }
 
     .project p {
@@ -305,12 +330,26 @@
       line-height: 1.8;
     }
 
+    .project .tags {
+      margin-top: 18px;
+    }
+
     .project-footer {
-      margin-top: 25px;
-      padding-top: 16px;
+      margin-top: auto;
+      padding-top: 22px;
       border-top: 1px solid var(--border);
       color: #8faaff;
       font-size: 13px;
+    }
+
+    .project-footer .button {
+      width: 100%;
+    }
+
+    .project-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
     }
 
     /* Контакты */
@@ -356,7 +395,8 @@
 
     /* Анимация */
 
-    .hero, section {
+    .hero,
+    section {
       animation: fade-in 0.8s ease both;
     }
 
@@ -365,11 +405,14 @@
         opacity: 0;
         transform: translateY(15px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
+    /* Мобильная адаптация */
 
     @media (max-width: 600px) {
       nav {
@@ -400,13 +443,25 @@
         padding: 50px 0;
       }
 
-      .about-card, .project, .contact-card {
+      .about-card,
+      .project,
+      .contact-card {
         padding: 22px;
+      }
+
+      .contact-links {
+        width: 100%;
+      }
+
+      .contact-links .button {
+        flex: 1;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
@@ -417,9 +472,13 @@
 
 <body>
 
+  <!-- Навигация -->
+
   <header class="container">
     <nav>
-      <a class="brand" href="#home">Dream is a mask<span>.</span></a>
+      <a class="brand" href="#home">
+        Dream is a mask<span>.</span>
+      </a>
 
       <div class="nav-links">
         <a href="#home">Главная</a>
@@ -436,7 +495,15 @@
 
     <section class="hero" id="home">
 
-      <h1>Привет, я<br><span>Dream is a mask.</span></h1>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        Personal website
+      </div>
+
+      <h1>
+        Привет, я<br>
+        <span>Dream is a mask.</span>
+      </h1>
 
       <p class="hero-description">
         Разработчик-энтузиаст, исследователь технологий
@@ -453,9 +520,10 @@
           Мои контакты
         </a>
       </div>
+
     </section>
 
-    <!-- Описание -->
+    <!-- Обо мне -->
 
     <section id="about">
       <div class="section-label">01 / About</div>
@@ -469,7 +537,7 @@
 
       <div class="glass about-card">
         <p>
-          Мой ник — <strong>Dкeam is a mask</strong>.
+          Мой ник — <strong>Dream is a mask</strong>.
           Мне интересны разработка программ,
           дизайн интерфейсов, операционные системы
           и современные технологии.
@@ -503,6 +571,8 @@
 
       <div class="projects-grid">
 
+        <!-- Dream Visuals -->
+
         <article class="glass project">
           <div class="project-icon">✦</div>
 
@@ -512,11 +582,50 @@
           </div>
 
           <p>
-            Визуальный лаунчер для майнкрафт.
+            Визуальный проект с современным интерфейсом,
+            вдохновлённым Liquid Glass и Fluent Design.
           </p>
 
           <div class="project-footer">
-            Скоро больше информации ↗
+            <span class="project-note">
+              Скоро больше информации ↗
+            </span>
+          </div>
+        </article>
+
+        <!-- Dream Launcher -->
+
+        <article class="glass project">
+          <div class="project-icon">🎮</div>
+
+          <div class="project-top">
+            <h3>Dream Launcher</h3>
+            <span class="status">В разработке</span>
+          </div>
+
+          <p>
+            Современный лаунчер Minecraft для Windows
+            на C# и WPF. Поддержка Vanilla, Fabric, Quilt
+            и Forge, игровые профили, настройка RAM
+            и дизайн в стиле Liquid Glass.
+          </p>
+
+          <div class="tags">
+            <span class="tag">💎 Liquid Glass</span>
+            <span class="tag">⚙️ C# / WPF</span>
+            <span class="tag">🎮 Minecraft</span>
+          </div>
+
+          <div class="project-footer">
+            <a
+              class="button button-primary"
+              href="https://github.com/dream5664che-lab/Dream-launcher"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Открыть репозиторий Dream Launcher на GitHub"
+            >
+              Открыть репозиторий ↗
+            </a>
           </div>
         </article>
 
@@ -541,19 +650,21 @@
         </div>
 
         <div class="contact-links">
-          <!-- ЗАМЕНИ ССЫЛКИ НА СВОИ -->
-
-          <a class="button button-primary"
-             href="https://github.com/dream5664che-lab"
-             target="_blank"
-             rel="noopener noreferrer">
+          <a
+            class="button button-primary"
+            href="https://github.com/dream5664che-lab"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub ↗
           </a>
 
-          <a class="button button-secondary"
-             href="https://t.me/Dream_is_a_mask_official"
-             target="_blank"
-             rel="noopener noreferrer">
+          <a
+            class="button button-secondary"
+            href="https://t.me/Dream_is_a_mask_official"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Telegram ↗
           </a>
         </div>
@@ -563,8 +674,11 @@
   </main>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
   </script>
 
 </body>
